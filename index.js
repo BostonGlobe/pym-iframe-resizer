@@ -1,5 +1,5 @@
-import AnimationFrame from 'animation-frame';
-import pym from 'pym.js';
+var AnimationFrame = require('animation-frame');
+var pym = require('pym.js');
 
 // russell's special sauce
 var specialSauce = function(onPymParentResize) {
@@ -53,4 +53,4 @@ var specialSauce = function(onPymParentResize) {
 };
 
 // start the whole thing
-export default specialSauce;
+module.exports = specialSauce;
