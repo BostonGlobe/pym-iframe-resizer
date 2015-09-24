@@ -1,6 +1,6 @@
 {
-  "name": "globe-iframe-resizer",
-  "version": "0.0.2",
+  "name": "pym-iframe-resizer",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,16 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gabrielflorit/globe-iframe-resizer.git"
+    "url": "https://github.com/BostonGlobe/pym-iframe-resizer.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gabrielflorit/globe-iframe-resizer/issues"
+    "url": "https://github.com/BostonGlobe/pym-iframe-resizer/issues"
   },
-  "homepage": "https://github.com/gabrielflorit/globe-iframe-resizer",
+  "homepage": "https://github.com/BostonGlobe/pym-iframe-resizer",
   "dependencies": {
     "animation-frame": "^0.2.4",
-    "pym.js": "^0.4.3"
+    "pym.js": "^0.4.5"
   }
 }
