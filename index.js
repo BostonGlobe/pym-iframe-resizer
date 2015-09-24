@@ -42,7 +42,6 @@ var specialSauce = function(onPymParentResize) {
 				requestAnimationFrame(pollHeight);
 			};
 
-			debugger;
 			pymChild = pym.Child({ renderCallback: onPymParentResize });
 
 			// start polling height
