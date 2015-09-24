@@ -1,11 +1,12 @@
 var AnimationFrame = require('animation-frame');
 var pym = require('pym.js');
 
+var pymChild = null;
+
 // russell's special sauce
 var specialSauce = function(onPymParentResize) {
 
 	'use strict';
-	var pymChild = null;
 
 	var init = function() {
 		setupPym();
@@ -21,7 +22,7 @@ var specialSauce = function(onPymParentResize) {
 
 			// convenience variable
 			var height = {previous: 0, current: 0};
-			
+
 			var pollHeight = function() {
 
 				// set current.height to the container's actual height
@@ -53,4 +54,7 @@ var specialSauce = function(onPymParentResize) {
 };
 
 // start the whole thing
-module.exports = specialSauce;
+module.exports = {
+	resizer: specialSauce,
+	pymChild: pymChild
+};
