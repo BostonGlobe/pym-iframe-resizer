@@ -1,5 +1,3 @@
-'use strict'
-
 import pym from 'pym.js'
 
 // rAF polyfill
