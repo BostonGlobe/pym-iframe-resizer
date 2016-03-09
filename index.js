@@ -1,11 +1,13 @@
 import pym from 'pym.js'
 
+const rafTimeout = (callback) => setTimeout(callback, 1000 / 60)
+
 // rAF polyfill
 const raf = window.requestAnimationFrame ||
 	window.webkitRequestAnimationFrame ||
 	window.mozRequestAnimationFrame ||
 	window.msRequestAnimationFrame ||
-	(callback) => setTimeout(callback, 1000 / 60)
+	rafTimeout
 
 let pymChild = null
 

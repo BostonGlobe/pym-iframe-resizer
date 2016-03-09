@@ -2,8 +2,13 @@
   "name": "pym-iframe-resizer",
   "version": "3.0.3",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
+    "clean": "rimraf build && rimraf .tmp",
+    "build:cjs": "rollup -c -f cjs -i index.js -o build/index.js",
+    "build:es6": "rollup -c        -i index.js -o build/index.es6.js",
+    "build": "npm run clean && npm run build:cjs && npm run build:es6",
+    "prepublish": "BABEL_ENV=rollup npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +23,11 @@
   "homepage": "https://github.com/BostonGlobe/pym-iframe-resizer",
   "dependencies": {
     "pym.js": "^0.4.5"
+  },
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.1.1",
+    "rimraf": "^2.5.2",
+    "rollup": "^0.25.4",
+    "rollup-plugin-babel": "^2.4.0"
   }
 }
