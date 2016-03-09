@@ -2,10 +2,10 @@ import pym from 'pym.js'
 
 // rAF polyfill
 const raf = window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    window.msRequestAnimationFrame ||
-    (callback) => setTimeout(callback, 1000 / 60)
+	window.webkitRequestAnimationFrame ||
+	window.mozRequestAnimationFrame ||
+	window.msRequestAnimationFrame ||
+	(callback) => setTimeout(callback, 1000 / 60)
 
 let pymChild = null
 
@@ -50,4 +50,4 @@ function getPymChild() {
 	return pymChild
 }
 
-module.exports = { setupPym, getPymChild }
+export { setupPym, getPymChild }
