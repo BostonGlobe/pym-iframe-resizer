@@ -1,6 +1,6 @@
 'use strict'
 
-const pym = require('pym.js')
+import pym from 'pym.js'
 
 // rAF polyfill
 const raf = window.requestAnimationFrame ||
@@ -11,7 +11,7 @@ const raf = window.requestAnimationFrame ||
 
 let pymChild = null
 
-function setupPym(id, resizeEvent) {
+function setupPym({ id = 'globe-graphic-container', resizeEvent }) {
 
 	// grab the iframe graphic's container
 	const container = document.getElementById(id)
