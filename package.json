@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/BostonGlobe/pym-iframe-resizer",
   "dependencies": {
-    "animation-frame": "^0.2.4",
     "pym.js": "^0.4.5"
   }
 }

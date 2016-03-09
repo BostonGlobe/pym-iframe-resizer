@@ -1,62 +1,55 @@
-var AnimationFrame = require('animation-frame');
-var pym = require('pym.js');
+'use strict'
 
-var pymChild = null;
+const pym = require('pym.js')
 
-// russell's special sauce
-var specialSauce = function(onPymParentResize) {
+// rAF polyfill
+const raf = window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.msRequestAnimationFrame ||
+    (callback) => setTimeout(callback, 1000 / 60)
 
-	'use strict';
+let pymChild = null
 
-	var init = function() {
-		setupPym();
-	};
+function setupPym(id, resizeEvent) {
 
-	var setupPym = function() {
+	// grab the iframe graphic's container
+	const container = document.getElementById(id)
 
-		// grab the iframe graphic's container
-		var container = document.getElementById('globe-graphic-container');
+	// do we have a container?
+	if(container) {
 
-		// do we have a container?
-		if(container) {
+		// convenience variable
+		const height = { previous: 0, current: 0 }
 
-			// convenience variable
-			var height = {previous: 0, current: 0};
+		const pollHeight = () => {
 
-			var pollHeight = function() {
+			// set current.height to the container's actual height
+			height.current = container.offsetHeight
 
-				// set current.height to the container's actual height
-				height.current = container.offsetHeight;
+			// if current.height is different than current.previous,
+			if(height.current !== height.previous) {
 
-				// if current.height is different than current.previous,
-				if(height.current !== height.previous) {
+				// set current.previous to the actual height RIGHT NOW
+				height.previous = height.current
 
-					// set current.previous to the actual height RIGHT NOW
-					height.previous = height.current;
+				// and notify pym
+				pymChild.sendHeight()
+			}
 
-					// and notify pym
-					pymChild.sendHeight();
-				}
-
-				// loop this forever with rAF
-				requestAnimationFrame(pollHeight);
-			};
-
-			pymChild = pym.Child({ renderCallback: onPymParentResize });
-
-			// start polling height
-			pollHeight();
+			// loop this forever with rAF
+			raf(pollHeight)
 		}
-	};
 
-	// start the whole thing for reals
-	init();
-};
+		pymChild = pym.Child({ renderCallback: resizeEvent })
 
-// start the whole thing
-module.exports = {
-	resizer: specialSauce,
-	getPymChild: function() {
-		return pymChild;
+		// start polling height
+		pollHeight()
 	}
-};
+}
+
+function getPymChild() {
+	return pymChild
+}
+
+module.exports = { setupPym, getPymChild }
