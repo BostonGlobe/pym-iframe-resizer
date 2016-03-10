@@ -1,1 +1,1 @@
-# globe-iframe-resizer
+# pym-iframe-resizer
