@@ -11,7 +11,7 @@ const raf = window.requestAnimationFrame ||
 
 let pymChild = null
 
-function setupPym({ id = 'globe-graphic-container', resizeEvent }) {
+export default function setupPym({ id = 'globe-graphic-container', resizeEvent }) {
 
 	// grab the iframe graphic's container
 	const container = document.getElementById(id)
@@ -46,10 +46,6 @@ function setupPym({ id = 'globe-graphic-container', resizeEvent }) {
 		// start polling height
 		pollHeight()
 	}
-}
 
-function getPymChild() {
 	return pymChild
 }
-
-export { setupPym, getPymChild }
